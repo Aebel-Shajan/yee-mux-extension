@@ -1,0 +1,36 @@
+.frameOptions{
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  & > button {
+    height: 100%;
+    flex-grow: 1;
+  }
+}
+
+.popupOptions {
+  position: absolute;
+  left: 1rem;
+  bottom: 2rem;
+  background-color: white;
+  border: black solid 1px;
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    width: 100%;
+    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}

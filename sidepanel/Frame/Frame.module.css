@@ -1,0 +1,72 @@
+.resizableHandle {
+    min-width: 0.5rem;
+    min-height: 0.5rem;
+    background-color: var(--color-1);
+    transition: background-color 100ms linear;
+    border-radius: 999px;
+}
+
+.resizableHandle[data-resize-handle-state="drag"]
+ {
+    background-color: rgb(160, 253, 255);
+  }
+
+.panel {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-2);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.panel:hover {
+    .frameInput {
+        display: flex;
+    }
+
+    .frameOptions {
+        display: flex;
+    }
+}
+
+.frameInput {
+    width: 100%;
+    height: 2rem;;
+    display: none;
+
+    .urlInput {
+        flex-grow: 1;
+        transition: background-color 300ms linear;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        background-color: white;
+        input {
+            border: none;
+            height: 70%;
+            border-radius: 999px;
+            width: 100%;
+            padding-left: 0.7rem;
+        }
+    }
+}
+
+.frameContent {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.frameOptions {
+    display: none;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--color-1);
+}

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      get-video-id:
+        specifier: ^4.1.7
+        version: 4.1.7
       plasmo:
         specifier: 0.89.4
         version: 0.89.4(@swc/core@1.9.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(lodash@4.17.21)(postcss@8.4.49)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -17,6 +20,12 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-icons:
+        specifier: ^5.3.0
+        version: 5.3.0(react@18.2.0)
+      react-resizable-panels:
+        specifier: ^2.1.7
+        version: 2.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 4.1.1
@@ -1890,6 +1899,10 @@ packages:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
 
+  get-video-id@4.1.7:
+    resolution: {integrity: sha512-bYHXe3BTbFbiViuNFyfFnZPnSDVWBu5N06p35LW7dD/ul4O1sdPSs3Brw8U/m5JlQUnkj3tht3luSz0k05vEYg==}
+    engines: {node: '>=16'}
+
   github-from-package@0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
 
@@ -2627,6 +2640,11 @@ packages:
   react-error-overlay@6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
 
+  react-icons@5.3.0:
+    resolution: {integrity: sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==}
+    peerDependencies:
+      react: '*'
+
   react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
@@ -2634,6 +2652,12 @@ packages:
   react-refresh@0.9.0:
     resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
     engines: {node: '>=0.10.0'}
+
+  react-resizable-panels@2.1.7:
+    resolution: {integrity: sha512-JtT6gI+nURzhMYQYsx8DKkx6bSoOGFp7A3CwMrOb8y5jFHFyqwo9m68UhmXRw57fRVJksFn1TSlm3ywEQ9vMgA==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -5201,6 +5225,10 @@ snapshots:
 
   get-stream@6.0.1: {}
 
+  get-video-id@4.1.7:
+    dependencies:
+      '@babel/runtime': 7.26.0
+
   github-from-package@0.0.0: {}
 
   glob-parent@5.1.2:
@@ -5974,9 +6002,18 @@ snapshots:
 
   react-error-overlay@6.0.9: {}
 
+  react-icons@5.3.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+
   react-refresh@0.14.0: {}
 
   react-refresh@0.9.0: {}
+
+  react-resizable-panels@2.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
 
   react@18.2.0:
     dependencies:

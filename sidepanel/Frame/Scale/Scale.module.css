@@ -1,0 +1,13 @@
+.baseContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scaleContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* REQUIRE PARENT TO HAVE POSITION RELATIVE */
+    top: 0;
+    left: 0;
+}
