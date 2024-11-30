@@ -15,7 +15,7 @@ export interface TreeNode {
 }
 
 export function createNewNode(
-  url:string="https://www.example.com"
+  url:string=""
 ): TreeNode {
   return {
     data: {
