@@ -53,10 +53,14 @@ const App = () => {
 
     // On message split the last node and add in new
     chrome.runtime.onMessage.addListener((message) => {
-      const nodeToSplit = getRightMostLeafNode(frameTree)
-      splitNode(nodeToSplit, "vertical")
-      if (nodeToSplit.right) {
-        nodeToSplit.right.data.url = message.url
+      const targetNode = getRightMostLeafNode(frameTree)
+      if (targetNode.data.url === "") {
+        targetNode.data.url = message.url
+      } else {
+        splitNode(targetNode, "vertical")
+        if (targetNode.right) {
+          targetNode.right.data.url = message.url
+        }
       }
       setRefreshState(old=> !old)
     })

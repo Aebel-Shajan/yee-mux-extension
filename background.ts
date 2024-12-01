@@ -36,7 +36,7 @@ chrome.contextMenus.onClicked.addListener(
         )
         if (!sidePanelPort) {
           runOnConnect = () => {
-            setTimeout(() => chrome.runtime.sendMessage({ "url": tab.url.toString() }), 600)
+            setTimeout(() => chrome.runtime.sendMessage({ "url": tab.url.toString() }), 1000)
           }
         }
         chrome.runtime.sendMessage({ "url": tab.url.toString() })
