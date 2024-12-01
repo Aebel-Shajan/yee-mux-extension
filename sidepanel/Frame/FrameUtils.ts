@@ -94,6 +94,7 @@ export function removeNode (
 
 export function saveTree(treeToSave: TreeNode) {
   storage.set("savedTree", JSON.stringify(treeToSave))
+  console.log("Saved", treeToSave)
 }
 
 export async function loadTree() {
@@ -101,5 +102,14 @@ export async function loadTree() {
   if (!loadedData) {
     throw new Error("Could not find a tree from local storage.")
   }
+  console.log("Loaded", JSON.parse(loadedData))
   return JSON.parse(loadedData) as TreeNode
+}
+
+export function getRightMostLeafNode(node: TreeNode): TreeNode {
+  let currentNode = node
+  while (currentNode.right !== null) {
+    currentNode = currentNode.right
+  }
+  return currentNode
 }

@@ -1,4 +1,14 @@
-import { loadTree, saveTree, splitNode } from "~sidepanel/Frame/FrameUtils";
+let sidePanelPort: chrome.runtime.Port | null = null;
+let runOnConnect = () => { }
+
+chrome.runtime.onConnect.addListener(function (port: chrome.runtime.Port) {
+  if (port.name === 'sidepanel') {
+    sidePanelPort = port
+    runOnConnect()
+    runOnConnect = () => { }
+    console.log("connected")
+  }
+})
 
 chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
@@ -20,15 +30,16 @@ chrome.contextMenus.onClicked.addListener(
     if (!tab.id) return
     switch (info.menuItemId) {
       case "open-website":
-        await chrome.sidePanel.open(
+        chrome.sidePanel.open(
           { windowId: tab.windowId }
+
         )
-        const rootNode = await loadTree()
-        splitNode(rootNode, "vertical")
-        if (rootNode.right) {
-          rootNode.right.data.url = tab.url
+        if (!sidePanelPort) {
+          runOnConnect = () => {
+            setTimeout(() => chrome.runtime.sendMessage({ "url": tab.url.toString() }), 600)
+          }
         }
-        saveTree(rootNode)
+        chrome.runtime.sendMessage({ "url": tab.url.toString() })
     }
   }
 )
