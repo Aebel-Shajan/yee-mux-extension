@@ -2,13 +2,7 @@ import Frame from "./Frame/Frame";
 import styles from "./index.module.css"
 import { PanelGroup } from "react-resizable-panels";
 import { getRightMostLeafNode, loadTree, saveTree, splitNode, type TreeNode } from "./Frame/FrameUtils";
-import { Storage } from "@plasmohq/storage"
 import { useEffect, useState } from "react";
-
-// Setup storage
-const storage = new Storage({
-  area: "local"
-})
 
 export let frameTree: TreeNode = {
   data: {
@@ -33,10 +27,8 @@ const App = () => {
   useEffect(() => {
     // On start immediately load tree from storage
     try {
-      loadTree().then((tree: TreeNode) => {
-        frameTree = tree
-        setRefreshState(old => !old)
-      })
+      frameTree = loadTree()
+      setRefreshState(old => !old)
     } catch (error) {
       console.log(error)
       saveTree(frameTree)
