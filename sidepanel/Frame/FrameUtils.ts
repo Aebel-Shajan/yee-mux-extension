@@ -49,10 +49,12 @@ export function splitNode(
   nodeToSplit: TreeNode,
   splitDirection: "vertical" | "horizontal",
 ) {
-  const nodeUrl = nodeToSplit.data.url
+  const preservedData = {...nodeToSplit.data}
   nodeToSplit.data.splitDirection = splitDirection
   
-  const sameNode = createNewNode(nodeUrl)
+  const sameNode = createNewNode()
+  sameNode.data = preservedData
+
   insertChildren(nodeToSplit, sameNode, createNewNode())
 }
 

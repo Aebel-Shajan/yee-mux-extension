@@ -5,4 +5,4 @@
 - [ ] Feature : Add option button
 - [ ] Feature : Add give feedback button
 - [ ] Feature : Do better styling
-- [ ] Fix : Scale does not get inherited after closing sibling
+- [x] Fix : Scale does not get inherited after closing sibling
