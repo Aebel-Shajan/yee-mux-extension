@@ -1,8 +1,14 @@
 import Frame from "./Frame/Frame";
 import styles from "./index.module.css"
 import { PanelGroup } from "react-resizable-panels";
-import {  loadTree, saveTree, type TreeNode } from "./Frame/FrameUtils";
+import { loadTree, saveTree, type TreeNode } from "./Frame/FrameUtils";
+import { Storage } from "@plasmohq/storage"
+import { useState } from "react";
 
+// Setup storage
+const storage = new Storage({
+    area: "local"
+})
 
 export let frameTree: TreeNode = {
   data: {
@@ -17,18 +23,28 @@ export let frameTree: TreeNode = {
 }
 
 try {
-  frameTree = loadTree()
-} catch {
-  console.log("couldnt load tree from memory")
+  loadTree().then((tree: TreeNode) => frameTree=tree)
+} catch (error) {
+  console.log(error)
   saveTree(frameTree)
 }
 
 
-
 const App = () => {
+  const [, setRefreshState] = useState(false)
+  
+  storage.watch({
+    "savedTree": (c) => {
+      console.log("storage changed!!!")
+      frameTree = JSON.parse(c.newValue) as TreeNode
+      setRefreshState(old=>!old)
+    }
+  })
+
   function handleRootClose() {
     throw new Error("Can't closse root frame!")
   }
+
   return (
     <div className={styles.appContainer}>
       <PanelGroup 
