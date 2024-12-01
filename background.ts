@@ -38,8 +38,10 @@ chrome.contextMenus.onClicked.addListener(
     if (!tab.id) return
     switch (info.menuItemId) {
       case "open-page":
+        if (!info.pageUrl) return
         openLinkInSidepanel(info.pageUrl, tab.windowId)
       case "open-link":
+        if (!info.linkUrl) return
         openLinkInSidepanel(info.linkUrl, tab.windowId)
     }
   }

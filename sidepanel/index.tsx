@@ -18,7 +18,8 @@ export let frameTree: TreeNode = {
 
 
 const App = () => {
-  const [refreshState, setRefreshState] = useState(false)
+  console.log("rerendered!")
+  const [rootRefreshState, setRootRefreshState] = useState<boolean>(false)
 
   function handleRootClose() {
     throw new Error("Can't closse root frame!")
@@ -28,7 +29,7 @@ const App = () => {
     // On start immediately load tree from storage
     try {
       frameTree = loadTree()
-      setRefreshState(old => !old)
+      setRootRefreshState(old => !old)
     } catch (error) {
       console.log(error)
       saveTree(frameTree)
@@ -45,16 +46,19 @@ const App = () => {
 
     // On message split the last node and add in new
     chrome.runtime.onMessage.addListener((message) => {
-      const targetNode = getRightMostLeafNode(frameTree)
-      if (targetNode.data.url === "") {
-        targetNode.data.url = message.url
-      } else {
-        splitNode(targetNode, "vertical")
-        if (targetNode.right) {
-          targetNode.right.data.url = message.url
+      console.log(message)
+      if (message.url) {
+        const targetNode = getRightMostLeafNode(frameTree)
+        if (targetNode.data.url === "") {
+          targetNode.data.url = message.url
+        } else {
+          splitNode(targetNode, "vertical")
+          if (targetNode.right) {
+            targetNode.right.data.url = message.url
+          }
         }
+        setRootRefreshState(old => !old)
       }
-      setRefreshState(old=> !old)
     })
 
     return (() => {

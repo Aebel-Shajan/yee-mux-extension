@@ -15,13 +15,13 @@ interface FrameProps {
 }
 
 const Frame = ({ frameNode, onClose }: FrameProps) => {
-  const [, setRefreshState] = useState(false)
+  const [refreshState, setRefreshState] = useState(false)
   const [urlInput, setUrlInput] = useState(frameNode.data.url)
   const [url, setUrl] = useState(frameNode.data.url)
   const [scale, setScale] = useState(frameNode.data.scale)
   const [fitVideo, setFitVideo] = useState(frameNode.data.fitVideo)
   const [refreshIframe, setRefreshIframe] = useState(false)
-  const panelGroupRef = useRef<ImperativePanelGroupHandle>(null)
+  const panelGroupRef = useRef<ImperativePanelGroupHandle|null>(null)
 
   function handleChildClose(targetChild: "left" | "right") {
     removeNode(frameNode, targetChild)
