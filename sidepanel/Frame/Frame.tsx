@@ -25,6 +25,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
 
   function handleChildClose(targetChild: "left" | "right") {
     removeNode(frameNode, targetChild)
+    saveTree(frameTree)
     setRefreshState((old: boolean) => !old)
   }
 
@@ -76,7 +77,9 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
   }
 
   useEffect(() => {
-    changeUrl(frameNode.data.url)
+    setUrl(frameNode.data.url)
+    setUrlInput(frameNode.data.url)
+    setRefreshIframe(true)
   }, [frameNode.data.url])
 
   if (
