@@ -1,11 +1,3 @@
-import { Storage } from "@plasmohq/storage"
-
-// Setup storage
-const storage = new Storage({
-  area: "local"
-})
-
-
 export type splitType = "horizontal" | "vertical" | "notSplit"
 
 export interface FrameData {
@@ -93,12 +85,12 @@ export function removeNode (
 
 
 export function saveTree(treeToSave: TreeNode) {
-  storage.set("savedTree", JSON.stringify(treeToSave))
+  localStorage.setItem("savedTree", JSON.stringify(treeToSave))
   console.log("Saved", treeToSave)
 }
 
-export async function loadTree() {
-  const loadedData = await storage.get("savedTree")
+export function loadTree() {
+  const loadedData = localStorage.getItem("savedTree")
   if (!loadedData) {
     throw new Error("Could not find a tree from local storage.")
   }
