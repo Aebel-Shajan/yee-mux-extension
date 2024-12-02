@@ -4,9 +4,12 @@ import { FaGear } from "react-icons/fa6"
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import someCoolImage from "data-base64:~assets/icon.png"
 import { useStorage } from "@plasmohq/storage/hook"
+import { useState } from "react";
+import FeedbackForm from "./FeedbackForm/FeedbackForm";
 
 const Options = () => {
   const [showFrameOptions, setShowFrameOptions] = useStorage("showFrameOptions", true)
+  const [showFeedback, setShowFeedback] = useState(false)
 
   return (
     <div className={styles.optionsContainer}>
@@ -33,7 +36,9 @@ const Options = () => {
       <button>
         <FaGear />
       </button>
-      <button>
+      <button
+        onClick={() => setShowFeedback(true)}
+      >
         <MdFeedback />
       </button>
       <a
@@ -42,6 +47,13 @@ const Options = () => {
       >
         <FaGithub />
       </a>
+
+      {
+        showFeedback &&
+        <FeedbackForm 
+          onClose={() => setShowFeedback(false)}
+        />
+      }
 
     </div>
   );

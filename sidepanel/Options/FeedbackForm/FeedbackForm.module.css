@@ -1,0 +1,50 @@
+.title {
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.feedbackModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: var(--color-1);
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.feedbackContainer {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  color: white;
+
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+
+    & > input, & > textarea, & > select {
+      width: 50%;
+      resize: vertical;
+    }
+
+    & > textarea {
+      height: 5rem;
+    }
+  }
+}
