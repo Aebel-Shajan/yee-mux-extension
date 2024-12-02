@@ -10,4 +10,4 @@
 
 ## 1st November 2024
 - [x] Feature : Add option to hide frame tools
-- [ ] Fix : After the user opens link/website in sidepanel the contents don't get saved.
+- [x] Fix : After the user opens link/website in sidepanel the contents don't get saved.

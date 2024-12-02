@@ -58,6 +58,7 @@ const App = () => {
             targetNode.right.data.url = message.url
           }
         }
+        saveTree(frameTree)
         setRootRefreshState(old => !old)
       }
     })

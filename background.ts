@@ -5,11 +5,16 @@ let runOnConnect = () => { }
 chrome.runtime.onConnect.addListener(function (port: chrome.runtime.Port) {
   if (port.name === 'sidepanel') {
     sidePanelPort = port
+    sidePanelPort.onDisconnect.addListener(() => {
+      sidePanelPort = null
+    })
     runOnConnect()
     runOnConnect = () => { }
     console.log("connected")
   }
 })
+
+
 
 // Make panel open on logo click
 chrome.sidePanel
@@ -57,7 +62,7 @@ function openLinkInSidepanel(link: string, currentWindow: number) {
   chrome.sidePanel.open({ windowId: currentWindow })
   if (!sidePanelPort) {
     runOnConnect = () => {
-      setTimeout(() => chrome.runtime.sendMessage({ "url": link }), 1000)
+      chrome.runtime.sendMessage({ "url": link })
     }
   }
   chrome.runtime.sendMessage({ "url": link })
