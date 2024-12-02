@@ -3,6 +3,7 @@ import styles from "./index.module.css"
 import { PanelGroup } from "react-resizable-panels";
 import { getRightMostLeafNode, loadTree, saveTree, splitNode, type TreeNode } from "./Frame/FrameUtils";
 import { useEffect, useState } from "react";
+import Options from "./Options/Options";
 
 export let frameTree: TreeNode = {
   data: {
@@ -69,6 +70,7 @@ const App = () => {
 
   return (
     <div className={styles.appContainer}>
+      <Options />
       <PanelGroup
         direction="vertical"
         className={styles.frameContainer}
