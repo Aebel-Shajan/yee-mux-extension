@@ -59,6 +59,7 @@ const App = () => {
           }
         }
         saveTree(frameTree)
+        frameTree = {...frameTree}
         setRootRefreshState(old => !old)
       }
     })

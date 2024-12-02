@@ -54,8 +54,10 @@ export function splitNode(
   
   const sameNode = createNewNode()
   sameNode.data = preservedData
-
-  insertChildren(nodeToSplit, sameNode, createNewNode())
+  sameNode.data.panelSize = 50
+  const newSibling = createNewNode()
+  newSibling.data.panelSize = 50
+  insertChildren(nodeToSplit, sameNode, newSibling)
 }
 
 /**

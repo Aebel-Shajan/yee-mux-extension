@@ -8,6 +8,11 @@
 - [x] Fix : Scale does not get inherited after closing sibling
 
 
-## 1st November 2024
+## 1st December 2024
 - [x] Feature : Add option to hide frame tools
 - [x] Fix : After the user opens link/website in sidepanel the contents don't get saved.
+
+
+## 2nd December 2024
+- [x] Fix: frametree not being detected as updated in index component. 
+- [x] Fix: Split node not splitting components perfectly equal.
