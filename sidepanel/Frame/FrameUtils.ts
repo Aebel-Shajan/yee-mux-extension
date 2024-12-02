@@ -22,7 +22,7 @@ export function createNewNode(
       panelSize: 50,
       splitDirection: "notSplit",
       url: url,
-      scale: 1,
+      scale: 0.7,
       fitVideo: true,
     },
     left: null,

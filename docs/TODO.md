@@ -16,3 +16,4 @@
 ## 2nd December 2024
 - [x] Fix: frametree not being detected as updated in index component. 
 - [x] Fix: Split node not splitting components perfectly equal.
+- [x] Fix: Default scaling too big.

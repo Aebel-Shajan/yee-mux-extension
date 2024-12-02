@@ -10,7 +10,7 @@ export let frameTree: TreeNode = {
     panelSize: 100,
     splitDirection: "notSplit",
     url: "",
-    scale: 1,
+    scale: 0.7,
     fitVideo: true
   },
   left: null,
