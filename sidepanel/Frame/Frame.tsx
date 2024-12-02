@@ -1,4 +1,4 @@
-import { type ImperativePanelGroupHandle, Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { type ImperativePanelGroupHandle, Panel, PanelGroup, PanelResizeHandle, type PanelResizeHandleProps } from "react-resizable-panels";
 import styles from "./Frame.module.css"
 import FrameOptions from "./FrameOptions/FrameOptions";
 import { type FormEvent, useEffect, useRef, useState } from "react";
@@ -24,6 +24,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
   const [fitVideo, setFitVideo] = useState(frameNode.data.fitVideo)
   const [refreshIframe, setRefreshIframe] = useState(false)
   const panelGroupRef = useRef<ImperativePanelGroupHandle | null>(null)
+  const [childMinimized, setChildMinimized] = useState<boolean>(false)
 
   function handleChildClose(targetChild: "left" | "right") {
     removeNode(frameNode, targetChild)
@@ -40,6 +41,10 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       frameNode.left.data.panelSize = layout[0]
       frameNode.right.data.panelSize = layout[1]
       saveTree(frameTree)
+
+      const isChildMinimized = frameNode.left.data.panelSize <= 2 || 
+      frameNode.right.data.panelSize <= 2
+      setChildMinimized(isChildMinimized)
     }
   }
 
@@ -84,6 +89,11 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
     setRefreshIframe(true)
   }, [frameNode.data.url])
 
+
+  useEffect(() => {
+    setRefreshState(old => !old)
+  }, [frameNode.data])
+
   if (
     frameNode.data.splitDirection !== "notSplit" &&
     frameNode.left !== null &&
@@ -114,6 +124,11 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
           />
           <PanelResizeHandle
             className={styles.resizableHandle}
+            style={
+              childMinimized ?
+                { backgroundColor: "#d63336" } :
+                {}
+            }
           />
           <Frame
             frameNode={frameNode.right}
