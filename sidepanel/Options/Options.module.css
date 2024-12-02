@@ -11,7 +11,7 @@
     height: 1.5rem;
     width: 1.5rem;
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
     overflow: hidden;
 

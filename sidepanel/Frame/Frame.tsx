@@ -8,6 +8,7 @@ import Scale from "./Scale/Scale";
 import CustomIframe from "./CustomIframe/CustomIframe";
 import { removeNode, saveTree, type TreeNode } from "./FrameUtils";
 import { frameTree } from "~sidepanel";
+import { useStorage } from "@plasmohq/storage/hook";
 
 interface FrameProps {
   frameNode: TreeNode,
@@ -15,13 +16,14 @@ interface FrameProps {
 }
 
 const Frame = ({ frameNode, onClose }: FrameProps) => {
+  const [showFrameOptions] = useStorage("showFrameOptions", true)
   const [refreshState, setRefreshState] = useState(false)
   const [urlInput, setUrlInput] = useState(frameNode.data.url)
   const [url, setUrl] = useState(frameNode.data.url)
   const [scale, setScale] = useState(frameNode.data.scale)
   const [fitVideo, setFitVideo] = useState(frameNode.data.fitVideo)
   const [refreshIframe, setRefreshIframe] = useState(false)
-  const panelGroupRef = useRef<ImperativePanelGroupHandle|null>(null)
+  const panelGroupRef = useRef<ImperativePanelGroupHandle | null>(null)
 
   function handleChildClose(targetChild: "left" | "right") {
     removeNode(frameNode, targetChild)
@@ -64,9 +66,9 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
   function handleUrlSubmit(event: FormEvent) {
     event.preventDefault()
     if (
-      !urlInput.startsWith("https://") || 
+      !urlInput.startsWith("https://") ||
       !urlInput.startsWith("https://")
-    ){
+    ) {
       setUrlInput(() => {
         changeUrl("https://" + urlInput)
         return "https://" + urlInput
@@ -96,7 +98,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
         frameNode.right.data.panelSize
       ])
     }
-  
+
     return (
       <Panel
         defaultSize={frameNode.data.panelSize}
@@ -130,6 +132,11 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       {/* Frame input */}
       <div
         className={styles.frameInput}
+        style={
+          showFrameOptions ?
+            {} :
+            { display: "none" }
+        }
       >
         <button
           onClick={() => changeUrl(url)}
@@ -171,7 +178,14 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       </div>
 
       {/* Frame options */}
-      <div className={styles.frameOptions}>
+      <div
+        className={styles.frameOptions}
+        style={
+          showFrameOptions ?
+            {} :
+            { display: "none" }
+        }
+      >
         <FrameOptions
           frameNode={frameNode}
           setRefreshState={setRefreshState}
