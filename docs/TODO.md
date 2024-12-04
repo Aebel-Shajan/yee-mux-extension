@@ -4,7 +4,7 @@
 - [ ] Feature : Allow user to set extension as new tab page.
 - [ ] Feature : Add option button
 - [x] Feature : Add give feedback button
-- [ ] Feature : Do better styling
+- [x] Feature : Do better styling
 - [x] Fix : Scale does not get inherited after closing sibling
 
 
@@ -17,3 +17,7 @@
 - [x] Fix: frametree not being detected as updated in index component. 
 - [x] Fix: Split node not splitting components perfectly equal.
 - [x] Fix: Default scaling too big.
+
+# 3rd December 2024
+- [ ] Feature : Add toolips to buttons
+- [ ] Feature : Add faq/help page
