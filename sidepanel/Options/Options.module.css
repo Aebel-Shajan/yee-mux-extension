@@ -1,11 +1,17 @@
 .optionsContainer {
-  height: 2.5rem;
+  width: 100%;
   padding: 0.5rem;
   padding-bottom: 0;
   background-color: var(--color-1);
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
   z-index: 9999;
+
+  & > div {
+    display: flex;
+    gap: 0.5rem;
+    flex-grow: 1;
+  }
 
   button, a{
     text-decoration: none;
@@ -32,4 +38,9 @@
   button:hover, a:hover {
     background-color: rgba(255, 255, 255, 0.41);
   }
+}
+
+.infoButtons {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -17,6 +17,7 @@ interface FrameProps {
 
 const Frame = ({ frameNode, onClose }: FrameProps) => {
   const [showFrameOptions] = useStorage("showFrameOptions", true)
+  const [landscape] = useStorage("landscape", false)
   const [refreshState, setRefreshState] = useState(false)
   const [urlInput, setUrlInput] = useState(frameNode.data.url)
   const [url, setUrl] = useState(frameNode.data.url)
@@ -42,8 +43,8 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       frameNode.right.data.panelSize = layout[1]
       saveTree(frameTree)
 
-      const isChildMinimized = frameNode.left.data.panelSize <= 2 || 
-      frameNode.right.data.panelSize <= 2
+      const isChildMinimized = frameNode.left.data.panelSize <= 2 ||
+        frameNode.right.data.panelSize <= 2
       setChildMinimized(isChildMinimized)
     }
   }
@@ -115,7 +116,13 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       >
         <PanelGroup
           ref={panelGroupRef}
-          direction={frameNode.data.splitDirection}
+          direction={
+            !landscape ?
+              frameNode.data.splitDirection :
+              frameNode.data.splitDirection === "vertical" ?
+                "horizontal" :
+                "vertical"
+          }
           onLayout={handleResize}
         >
           <Frame
@@ -144,39 +151,6 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
       className={styles.panel}
       defaultSize={frameNode.data.panelSize}
     >
-      {/* Frame input */}
-      <div
-        className={styles.frameInput}
-        style={
-          showFrameOptions ?
-            {} :
-            { display: "none" }
-        }
-      >
-        <button
-          onClick={() => changeUrl(url)}
-        >
-          <BiRefresh />
-        </button>
-        <form
-          onSubmit={handleUrlSubmit}
-          className={styles.urlInput}
-        >
-          <input
-            type="text"
-            placeholder="Enter url here..."
-            value={urlInput}
-            onChange={(event) => { setUrlInput(event.target.value) }}
-            style={url === urlInput ? { backgroundColor: "#AADFA3" } : { backgroundColor: "#DADADA" }}
-          />
-        </form>
-        <button
-          onClick={() => changeUrl("")}
-        >
-          <FaEraser />
-        </button>
-
-      </div>
 
       {/* Iframe */}
       <div className={styles.frameContent}>
@@ -192,6 +166,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
         </Scale>
       </div>
 
+
       {/* Frame options */}
       <div
         className={styles.frameOptions}
@@ -201,6 +176,39 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
             { display: "none" }
         }
       >
+        {/* Frame input */}
+        <div
+          className={styles.frameInput}
+          style={
+            showFrameOptions ?
+              {} :
+              { display: "none" }
+          }
+        >
+          <button
+            onClick={() => changeUrl(url)}
+          >
+            <BiRefresh />
+          </button>
+          <form
+            onSubmit={handleUrlSubmit}
+            className={styles.urlInput}
+          >
+            <input
+              type="text"
+              placeholder="Enter url here..."
+              value={urlInput}
+              onChange={(event) => { setUrlInput(event.target.value) }}
+              style={url === urlInput ? { backgroundColor: "#AADFA3" } : { backgroundColor: "#DADADA" }}
+            />
+          </form>
+          <button
+            onClick={() => changeUrl("")}
+          >
+            <FaEraser />
+          </button>
+
+        </div>
         <FrameOptions
           frameNode={frameNode}
           setRefreshState={setRefreshState}
