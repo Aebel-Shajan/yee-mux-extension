@@ -25,3 +25,4 @@
 ## 4th December 2024
 - [x] Feature : Add modal/improve feedback page.
 - [x] Feature : Refactor instructions inside frame to be better.
+- [x] Fix : Sidepanel is open when yeemux open in new tab.

@@ -19,6 +19,7 @@ const Options = () => {
         href={chrome.runtime.getURL('sidepanel.html')}
         target="_blank"
         data-tooltip-id="open-tab" 
+        onClick={() => window.close()}
       >
         <img src={someCoolImage} />
       </a>
