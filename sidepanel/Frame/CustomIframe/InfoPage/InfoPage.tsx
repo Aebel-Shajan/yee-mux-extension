@@ -61,7 +61,7 @@ const InfoPage = () => {
             </ol>
             or
             <ol>
-              <li>Enter the url of the website at the top of a panel</li>
+              <li>Enter the url of the website at the bottom of a panel</li>
               <li>Press enter</li>
             </ol>
           </div>

@@ -28,7 +28,7 @@ const HelpPage = (
               </ol>
               or
               <ol>
-                <li>Enter the url of the website at the top of a panel</li>
+                <li>Enter the url of the website at the bottom of a panel</li>
                 <li>Press enter</li>
               </ol>
             </div>
@@ -38,7 +38,7 @@ const HelpPage = (
             <summary>The website is not showing in the sidepanel</summary>
             <div>
               With the sidepanel open try right clicking and opening the website again.
-              If that does not work try submitting feedback with the feedback button.
+              If that does not work report the bug with the feedback button.
             </div>
           </details>
           <details name="help">
