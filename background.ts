@@ -47,6 +47,10 @@ chrome.contextMenus.onClicked.addListener(
         openLinkInSidepanel(info.pageUrl, tab.windowId)
       case "open-link":
         if (!info.linkUrl) return
+        if (info.pageUrl === chrome.runtime.getURL('sidepanel.html')) {
+          chrome.runtime.sendMessage({ "url": info.linkUrl })
+          return
+        }
         openLinkInSidepanel(info.linkUrl, tab.windowId)
     }
   }

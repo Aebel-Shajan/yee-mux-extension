@@ -28,3 +28,4 @@
 - [x] Fix : Sidepanel is open when yeemux open in new tab.
 - [x] Feature : Add button to set rotation of panels. 
 - [x] Feature : Move url input to the bottom
+- [x] Fix : Stop opening sidepanel when on extension page.
