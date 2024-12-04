@@ -19,5 +19,5 @@
 - [x] Fix: Default scaling too big.
 
 # 3rd December 2024
-- [ ] Feature : Add toolips to buttons
+- [x] Feature : Add toolips to buttons
 - [ ] Feature : Add faq/help page

@@ -5,6 +5,7 @@
   background-color: var(--color-1);
   display: flex;
   gap: 0.5rem;
+  z-index: 9999;
 
   button, a{
     text-decoration: none;
