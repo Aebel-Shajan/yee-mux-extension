@@ -100,7 +100,7 @@ const HelpPage = (
           <details name="help">
             <summary>Why make this?</summary>
             <div>
-              I was having trouble with procrastination and I would spend hours watching youtube shorts/ instagram on my phone.
+              I was having trouble with procrastination 😞. I would spend hours watching youtube shorts/ instagram on my phone ☹️.
               With this extension I can watch tiktok, youtube, instagram all at the same time without having to look at my phone. Problem solved 😀
             </div>
           </details>
