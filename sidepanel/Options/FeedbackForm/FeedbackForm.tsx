@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./FeedbackForm.module.css"
+import Modal from "~sidepanel/Modal/Modal";
 
 interface FeedbackFormProps {
   onClose: CallableFunction
@@ -37,49 +38,65 @@ const FeedbackForm = (
   };
 
   return (
-    <div className={styles.feedbackModal}>
+    <Modal onClose={onClose}>
+
       <div className={styles.feedbackContainer}>
 
-      <div className={styles.title}>
-        <button
-          onClick={() => onClose()}
+        <h1
+          className={styles.title}
         >
-          x
-        </button>
-        <h3>Feedback form</h3>
+          Feedback form
+        </h1>
+
+        <form
+          className={styles.feedbackForm}
+          onSubmit={onSubmit}
+        >
+          <div>
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div>
+            <label>Email</label>
+            <input 
+              type="email"
+              name="email"
+               />
+          </div>
+          <div>
+            <label>Feedback</label>
+            <textarea
+              name="message"
+              required
+              placeholder="Write feedback here, can be bug report 🐞, feature requests 🧪 or anything else that can improve the extension."
+            ></textarea>
+          </div>
+          <button
+            style={{ width: "100%" }}
+            type="submit">
+            Submit Form
+          </button>
+        </form>
+        <span style={{ color: "white" }}>{result}</span>
+      <div className={styles.info}>
+        <p>
+          Thanks for using my extension :). 
+        </p>
+
+        <p>
+          I look forward to hearing what you have to say.
+        </p>
+
+        <p>
+          Apologies if there is a bug or if the extension
+          does not work.
+          I will try and get a fix released as soon as possible if there is such an issue.
+        </p>
+
       </div>
-      <form
-      className={styles.feedbackForm}
-        onSubmit={onSubmit}
-      >
-        <div>
-
-          <label>Name</label>
-          <input type="text" name="name" required />
-        </div>
-        <div>
-
-          <label>Email</label>
-          <input type="email" name="email" required />
-        </div>
-        <div>
-          <label>Feedback</label>
-          <textarea 
-          name="message" 
-          required
-          placeholder="Write feedback here, can be bug report, feature request or any nice words you have for the dev..."
-          
-          ></textarea>
-        </div>
-        <button 
-        style={{width: "100%"}}
-        
-        type="submit">Submit Form</button>
-      </form>
-      <span style={{color: "white"}}>{result}</span>
       </div>
+    </Modal>
 
-    </div>
   );
 }
 

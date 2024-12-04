@@ -21,3 +21,6 @@
 # 3rd December 2024
 - [x] Feature : Add toolips to buttons
 - [ ] Feature : Add faq/help page
+
+# 4th December 2024
+- [x] Feature : Add modal/improve feedback page.
