@@ -2,6 +2,7 @@ import Youtube from "./Youtube/Youtube";
 import { useEffect, useRef } from "react";
 import styles from "./CustomIframe.module.css"
 import getVideoId from "get-video-id";
+import InfoPage from "./InfoPage/InfoPage";
 
 interface CustomIframeProps {
   src: string,
@@ -32,26 +33,7 @@ const CustomIframe = ({
 
   if (src === "") {
     return (
-      <div
-        className={styles.messageContainer}
-        >
-        <div
-          className={styles.message}
-        >
-          <p>
-            Input a valid url above and press the enter key. 
-          </p>
-          <p>
-          Enter a youtube video url to embed it.
-
-          </p>
-
-          <a href="https://chromewebstore.google.com/detail/hiframe-the-hyper-iframe/joibipdfkleencgfgbbncoheaekffdfn?hl=en">
-          (Some sites may be blocked in iframes. If you want to get around this install the "hiframe"
-          chrome extension)
-          </a>
-        </div>
-      </div>
+      <InfoPage />
     )
   }
 
@@ -72,11 +54,13 @@ const CustomIframe = ({
   }
 
   return (
+    <>
     <iframe
       allow="nested-history 'none'"
       ref={iframeRef}
       className={styles.iframe}
       src={src} />
+    </>
   )
 }
 

@@ -24,4 +24,4 @@
 
 ## 4th December 2024
 - [x] Feature : Add modal/improve feedback page.
-- [ ] Feature : Refactor instructions inside frame to be better.
+- [x] Feature : Refactor instructions inside frame to be better.
