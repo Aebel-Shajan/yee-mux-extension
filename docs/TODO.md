@@ -18,9 +18,10 @@
 - [x] Fix: Split node not splitting components perfectly equal.
 - [x] Fix: Default scaling too big.
 
-# 3rd December 2024
+## 3rd December 2024
 - [x] Feature : Add toolips to buttons
-- [ ] Feature : Add faq/help page
+- [x] Feature : Add faq/help page
 
-# 4th December 2024
+## 4th December 2024
 - [x] Feature : Add modal/improve feedback page.
+- [ ] Feature : Refactor instructions inside frame to be better.
