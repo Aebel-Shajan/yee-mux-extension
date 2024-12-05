@@ -3,6 +3,7 @@ import styles from "./FrameOptions.module.css";
 import { useState } from "react";
 import { splitNode, type TreeNode } from "../FrameUtils";
 import { CgMoreVertical } from "react-icons/cg";
+import { useStorage } from "@plasmohq/storage/hook";
 interface FrameOptionsProps {
   frameNode: TreeNode,
   setRefreshState: CallableFunction,
@@ -26,6 +27,7 @@ const FrameOptions = (
 ) => {
 
   const [showScale, setShowScale] = useState(false)
+  const [landscape] = useStorage("landscape", false)
 
   function handleSplit(splitDirection: "vertical" | "horizontal") {
     splitNode(frameNode, splitDirection)
@@ -77,10 +79,18 @@ const FrameOptions = (
         <CgMoreVertical />
       </button>
       <button onClick={() => handleSplit("vertical")}>
-        <VscSplitVertical />
+        {
+          landscape ?
+            <VscSplitHorizontal /> :
+            <VscSplitVertical />
+        }
       </button>
       <button onClick={() => handleSplit("horizontal")}>
-        <VscSplitHorizontal />
+        {
+          !landscape ?
+            <VscSplitHorizontal /> :
+            <VscSplitVertical />
+        }
       </button>
       <button onClick={() => handleClose()}>
         <VscClose />
