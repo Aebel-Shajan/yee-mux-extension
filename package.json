@@ -31,7 +31,6 @@
   "manifest": {
     "permissions": [
       "contextMenus",
-      "tabs",
       "activeTab",
       "storage"
     ]
