@@ -1,0 +1,18 @@
+.uploadJsonContainer {
+  color: white;
+  width: 100%;
+  font-size: 1.05rem;
+
+}
+
+.uploadForm {
+  color: white;
+  display: flex;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  gap: 2rem;
+  align-items: center;
+  
+}

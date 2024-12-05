@@ -1,6 +1,6 @@
 import styles from "./Options.module.css"
 import { MdFeedback } from "react-icons/md";
-import { FaEye, FaEyeSlash, FaGithub, FaQuestion } from "react-icons/fa";
+import { FaDownload, FaEye, FaEyeSlash, FaGithub, FaQuestion, FaUpload } from "react-icons/fa";
 import someCoolImage from "data-base64:~assets/icon.png"
 import { useStorage } from "@plasmohq/storage/hook"
 import { useState } from "react";
@@ -8,17 +8,45 @@ import FeedbackForm from "./FeedbackForm/FeedbackForm";
 import { Tooltip } from 'react-tooltip';
 import HelpPage from "./HelpPage/HelpPage";
 import { LuRectangleHorizontal, LuRectangleVertical } from "react-icons/lu";
+import { frameTree } from "~sidepanel";
+import { useRef } from "react";
+import Modal from "~sidepanel/Modal/Modal"; // Import your custom Modal component
+import { BiChevronRight } from "react-icons/bi";
+import UploadJson from "./UploadJson/UploadJson";
 
+interface OptionsProps {
+  forceRefresh: CallableFunction
+}
 
-const Options = () => {
+const Options = (
+  {
+    forceRefresh
+  }: OptionsProps
+) => {
   const [showFrameOptions, setShowFrameOptions] = useStorage("showFrameOptions", true)
   const [landscape, setLandscape] = useStorage("landscape", false)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const [showUpload, setshowUpload] = useState(false);
+
+
+
+  function downloadFrameTree() {
+    const data = frameTree;
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "yee-mux-layout.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
 
 
   function handleOpenTab() {
-    window.close() 
+    window.close()
   }
   return (
     <div className={styles.optionsContainer}>
@@ -63,10 +91,24 @@ const Options = () => {
               <LuRectangleVertical />
 
           }
+        </button>
+        </div>
+        <div>
+        <button
+          onClick={downloadFrameTree}
+          data-tooltip-id="download-json"
+        >
+          <FaDownload />
+        </button>
 
-
+        <button
+          onClick={() => setshowUpload(true)}
+          data-tooltip-id="upload-json"
+        >
+          <FaUpload />
         </button>
       </div>
+
       <div className={styles.infoButtons}>
         <button
           onClick={() => setShowFeedback(true)}
@@ -88,6 +130,15 @@ const Options = () => {
           <FaGithub />
         </a>
       </div>
+
+
+
+      {showUpload && (
+        <UploadJson
+          forceRefresh={forceRefresh}
+          onClose={() => setshowUpload(false)}
+        />
+      )}
 
 
       {
@@ -121,9 +172,13 @@ const Options = () => {
       <Tooltip id="follow-github" place="bottom-start">
         Follow me on github 👨‍🎨
       </Tooltip>
-
+      <Tooltip id="download-json" place="bottom-start">
+        Download layout as json
+      </Tooltip>
+      <Tooltip id="upload-json" place="bottom-start">
+        Upload a custom layout
+      </Tooltip>
     </div>
   );
 }
-
 export default Options;

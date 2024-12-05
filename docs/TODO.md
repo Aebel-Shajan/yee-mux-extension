@@ -32,3 +32,4 @@
 
 ## 5th December 2024
 - [x] Feature : Add youtube playlist embed feature.
+- [x] Feature : Allow users to load and download layouts.

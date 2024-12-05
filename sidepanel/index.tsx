@@ -26,11 +26,15 @@ const App = () => {
     throw new Error("Can't closse root frame!")
   }
 
+  function forceRefresh() {
+    setState(Date.now())
+    frameTree = loadTree()
+  }
+
   useEffect(() => {
     // On start immediately load tree from storage
     try {
-      frameTree = loadTree()
-      setState(Date.now())
+      forceRefresh()
     } catch (error) {
       console.log(error)
       saveTree(frameTree)
@@ -59,8 +63,7 @@ const App = () => {
           }
         }
         saveTree(frameTree)
-        frameTree = {...frameTree}
-        setState(Date.now())
+        forceRefresh()
       }
     })
 
@@ -73,7 +76,7 @@ const App = () => {
   return (
     // Used key to force a rerender of child states because react is tryna be smart 
     <div className={styles.appContainer} key={state}> 
-      <Options />
+      <Options forceRefresh={forceRefresh}/>
       <PanelGroup
         direction="vertical"
         className={styles.frameContainer}
