@@ -28,7 +28,7 @@ const App = () => {
 
   function forceRefresh() {
     setState(Date.now())
-    frameTree = loadTree()
+    frameTree = {...loadTree()}
   }
 
   useEffect(() => {

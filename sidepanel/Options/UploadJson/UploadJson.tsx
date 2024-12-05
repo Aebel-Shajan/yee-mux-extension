@@ -52,8 +52,11 @@ const UploadJson = (
 
   function handleLoadFrame() {
     if (hasValidFile && jsonToLoad) {
+
       saveTree(jsonToLoad)
-      onClose()
+      setHasValidFile(false)
+      setJsonToLoad(null)
+      onClose()      
       forceRefresh()
     } else {
       alert("Couldnt load json as layout! 😟")
