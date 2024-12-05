@@ -24,7 +24,7 @@ const Youtube = (
 
   if (videoUrl.includes("&list=")) {
     const playlistId = getTextAfterSearchString(videoUrl, "&list=")
-    embedUrl = `https://www.youtube.com/embed/?listType=playlist&loop=1&list=${playlistId}`
+    embedUrl = `https://www.youtube.com/embed/?listType=playlist&autoplay=1&loop=1&list=${playlistId}`
   }
 
   return (

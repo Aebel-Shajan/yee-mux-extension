@@ -19,6 +19,9 @@ const InfoPage = (
       <div
         className={styles.message}
       >
+        <div>
+          Useful stuff
+        </div>
         <div className={styles.buttonContainer}>
           <IconButton onClick={() => changeUrl("https://notepad-online.com/en/")}>
             <RiFileTextLine />
@@ -38,11 +41,19 @@ const InfoPage = (
           <IconButton onClick={() => changeUrl("https://www.photopea.com/")}>
             <SiPhotopea />
           </IconButton>
+        </div>
+        <div>
+          Also useful stuff
+        </div>
+        <div className={styles.buttonContainer}>
           <IconButton onClick={() => changeUrl("https://youtu.be/HuFYqnbVbzY")}>
           <FaHeadphones />
           </IconButton>
           <IconButton onClick={() => changeUrl("https://www.youtube.com/watch?v=zZ7AimPACzc")}>
             <FaSubway />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.youtube.com/watch?v=tPEE9ZwTmy0&list=PLuOoSpwS0IXYRdujiK2zK6lMfGiiQbnON&pp=gAQB")}>
+            😵‍💫
           </IconButton>
         </div>
 
