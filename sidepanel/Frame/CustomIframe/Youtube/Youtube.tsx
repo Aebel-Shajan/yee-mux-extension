@@ -20,6 +20,13 @@ const Youtube = (
     return <div>video id not found</div>
   }
 
+  let embedUrl = `https://www.youtube.com/embed/${videoId}?mute=${mute ? "1" : "0"}&enablejsapi=1`
+
+  if (videoUrl.includes("&list=")) {
+    const playlistId = getTextAfterSearchString(videoUrl, "&list=")
+    embedUrl = `https://www.youtube.com/embed/?listType=playlist&loop=1&list=${playlistId}`
+  }
+
   return (
     <div
       className={styles.iframeContainerContainer}>
@@ -32,12 +39,26 @@ const Youtube = (
           className={!fitVideo || mouseOver?  styles.iframe : styles.iframeContained }
           ref={ref}
           id="video"
-          src={`https://www.youtube.com/embed/${videoId}?mute=${mute ? "1" : "0"}&enablejsapi=1`}
+          src={embedUrl}
         />
       </div>
     </div>
 
   );
+}
+
+
+function getTextAfterSearchString(text, searchString) {
+  // Find the position of the search string
+  const index = text.indexOf(searchString);
+  
+  // If the search string is not found, return an empty string or handle accordingly
+  if (index === -1) {
+      return ""; // or throw an error, depending on your use case
+  }
+  
+  // Extract the text after the search string
+  return text.substring(index + searchString.length);
 }
 
 export default forwardRef(Youtube);

@@ -29,3 +29,6 @@
 - [x] Feature : Add button to set rotation of panels. 
 - [x] Feature : Move url input to the bottom
 - [x] Fix : Stop opening sidepanel when on extension page.
+
+## 5th December 2024
+- [x] Feature : Add youtube playlist embed feature.
