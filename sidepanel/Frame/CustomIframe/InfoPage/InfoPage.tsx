@@ -55,6 +55,9 @@ const InfoPage = (
           <IconButton onClick={() => changeUrl("https://www.youtube.com/watch?v=tPEE9ZwTmy0&list=PLuOoSpwS0IXYRdujiK2zK6lMfGiiQbnON&pp=gAQB")}>
             😵‍💫
           </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.youtube.com/watch?v=q6EoRBvdVPQ&list=PLuOoSpwS0IXYS-BL1tlHbcQ-t_4xn26h2&index=1")}>
+            👁️
+          </IconButton>
         </div>
 
         <details name="help">

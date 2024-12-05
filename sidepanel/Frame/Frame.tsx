@@ -3,7 +3,7 @@ import styles from "./Frame.module.css"
 import FrameOptions from "./FrameOptions/FrameOptions";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import { BiRefresh } from "react-icons/bi";
-import { FaEraser } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Scale from "./Scale/Scale";
 import CustomIframe from "./CustomIframe/CustomIframe";
 import { removeNode, saveTree, type TreeNode } from "./FrameUtils";
@@ -206,7 +206,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
           <button
             onClick={() => changeUrl("")}
           >
-            <FaEraser />
+            <FaHome />
           </button>
 
         </div>
