@@ -23,7 +23,7 @@ export function createNewNode(
       splitDirection: "notSplit",
       url: url,
       scale: 0.7,
-      fitVideo: true,
+      fitVideo: false,
     },
     left: null,
     right: null
