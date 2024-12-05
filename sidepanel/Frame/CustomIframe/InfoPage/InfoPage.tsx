@@ -1,6 +1,17 @@
+import { FaHeadphones, FaSubway, FaWikipediaW } from "react-icons/fa";
 import styles from "./InfoPage.module.css"
+import { RiFileTextLine, RiYoutubeLine, RiTimeLine, RiSunCloudyLine } from "react-icons/ri";
+import IconButton from "~sidepanel/IconButton/IconButton";
+import { SiPhotopea } from "react-icons/si";
 
-const InfoPage = () => {
+interface InfoPageProps {
+  changeUrl: CallableFunction
+}
+const InfoPage = (
+  {
+    changeUrl
+  }
+) => {
   return (
     <div
       className={styles.messageContainer}
@@ -8,47 +19,33 @@ const InfoPage = () => {
       <div
         className={styles.message}
       >
-            <details name="help">
-          <summary>List of iframe friendly sites:</summary>
-          Right click {">"} "open in sidepanel"
-          <ul>
-            <li>
-              <a
-                href="https://notepad-online.com/en/"
-                target="_blank">
-                Notes
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://discovertube.xyz"
-                target="_blank">
-                Discover tube (for yt vids)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.wikipedia.org/"
-                target="_blank">
-                Wikipedia
-              </a>
-            </li>
-            <li>
-              <a
-              href="https://www.clockfaceonline.com/clocks/digital/"
-              target="_blank">
-                Clock
-              </a>
-            </li>
-            <li>
-              <a
-              href="https://www.worldweatheronline.com/country.aspx"
-              target="_blank">
-                Weather
-              </a>
-            </li>
-          </ul>
-        </details>
+        <div className={styles.buttonContainer}>
+          <IconButton onClick={() => changeUrl("https://notepad-online.com/en/")}>
+            <RiFileTextLine />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://discovertube.xyz")}>
+            <RiYoutubeLine />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.wikipedia.org/")}>
+            <FaWikipediaW />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.clockfaceonline.com/clocks/digital/")}>
+            <RiTimeLine />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.worldweatheronline.com/country.aspx")}>
+            <RiSunCloudyLine />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.photopea.com/")}>
+            <SiPhotopea />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://youtu.be/HuFYqnbVbzY")}>
+          <FaHeadphones />
+          </IconButton>
+          <IconButton onClick={() => changeUrl("https://www.youtube.com/watch?v=zZ7AimPACzc")}>
+            <FaSubway />
+          </IconButton>
+        </div>
+
         <details name="help">
           <summary>How do I use this extension?</summary>
           <div>

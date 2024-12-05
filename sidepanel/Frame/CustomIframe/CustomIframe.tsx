@@ -8,14 +8,16 @@ interface CustomIframeProps {
   src: string,
   refreshIframe: boolean,
   setRefreshIframe: CallableFunction,
-  fitVideo: boolean
+  fitVideo: boolean,
+  changeUrl: CallableFunction
 }
 
 const CustomIframe = ({
   src,
   refreshIframe,
   setRefreshIframe,
-  fitVideo
+  fitVideo,
+  changeUrl
 }: CustomIframeProps,
 ) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -33,7 +35,7 @@ const CustomIframe = ({
 
   if (src === "") {
     return (
-      <InfoPage />
+      <InfoPage changeUrl={changeUrl}/>
     )
   }
 

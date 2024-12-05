@@ -162,6 +162,7 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
             refreshIframe={refreshIframe}
             setRefreshIframe={setRefreshIframe}
             fitVideo={fitVideo}
+            changeUrl={changeUrl}
           />
         </Scale>
       </div>
