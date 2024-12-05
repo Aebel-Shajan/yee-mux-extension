@@ -2,14 +2,5 @@
   border: none;
   width: 100%;
   height: 100%;
-  animation: flash 0.8s infinite;
-}
-
-@keyframes flash {
-  0%, 100% {
-    background-color: var(--color-1); /* Color 1 */
-  }
-  50% {
-    background-color: whitesmoke /* Color 2 */
-  }
+  background-color: white;
 }
