@@ -20,7 +20,7 @@ export let frameTree: TreeNode = {
 
 const App = () => {
   console.log("rerendered!")
-  const [rootRefreshState, setRootRefreshState] = useState<boolean>(false)
+  const [state, setState] = useState(Date.now());
 
   function handleRootClose() {
     throw new Error("Can't closse root frame!")
@@ -30,7 +30,7 @@ const App = () => {
     // On start immediately load tree from storage
     try {
       frameTree = loadTree()
-      setRootRefreshState(old => !old)
+      setState(Date.now())
     } catch (error) {
       console.log(error)
       saveTree(frameTree)
@@ -60,7 +60,7 @@ const App = () => {
         }
         saveTree(frameTree)
         frameTree = {...frameTree}
-        setRootRefreshState(old => !old)
+        setState(Date.now())
       }
     })
 
@@ -69,9 +69,10 @@ const App = () => {
       port.disconnect();
     })
   }, [])
-
+  console.log("Rendered: ", frameTree)
   return (
-    <div className={styles.appContainer}>
+    // Used key to force a rerender of child states because react is tryna be smart 
+    <div className={styles.appContainer} key={state}> 
       <Options />
       <PanelGroup
         direction="vertical"
