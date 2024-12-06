@@ -72,8 +72,10 @@ const Frame = ({ frameNode, onClose }: FrameProps) => {
   function handleUrlSubmit(event: FormEvent) {
     event.preventDefault()
     if (
-      !urlInput.startsWith("https://") ||
-      !urlInput.startsWith("https://")
+      !urlInput.startsWith("https://") &&
+      !urlInput.startsWith("http://") &&
+      !urlInput.startsWith("file://") &&
+      !urlInput.startsWith("data:image/")
     ) {
       setUrlInput(() => {
         changeUrl("https://" + urlInput)
