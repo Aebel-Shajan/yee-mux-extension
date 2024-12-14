@@ -1,7 +1,7 @@
 {
   "name": "yee-mux",
   "displayName": "Yee mux",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chrome extension like tmux but with iframes.",
   "author": "Aebel",
   "scripts": {
