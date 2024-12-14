@@ -24,14 +24,10 @@ const CustomIframe = ({
 
 
   useEffect(() => {
-    if (refreshIframe) {
       const iframe = iframeRef.current
       if (!iframe) return
-      iframe.src = ""
-      iframe.src = src
-      setRefreshIframe(false)
-    }
-  }, [refreshIframe, setRefreshIframe])
+      open(src, iframe)
+  }, [src])
 
   if (src === "") {
     return (
@@ -58,10 +54,9 @@ const CustomIframe = ({
   return (
     <>
     <iframe
-      allow="nested-history 'none'"
       ref={iframeRef}
       className={styles.iframe}
-      src={src} />
+      />
     </>
   )
 }
@@ -77,3 +72,51 @@ export function isValidUrl(url: string) {
 
 
 export default CustomIframe;
+
+
+const open = async (currenturl: string, iframe: HTMLIFrameElement) => {
+  console.log("yoo")
+  const DNR_MODIFY_HEADERS = 'modifyHeaders' as chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS;
+  const DNR_REMOVE = 'remove' as chrome.declarativeNetRequest.HeaderOperation.REMOVE;
+  chrome.declarativeNetRequest.updateSessionRules({
+    removeRuleIds: [1],
+    addRules: [
+      {
+        id: 1,
+        priority: 1,
+        action: {
+          type: DNR_MODIFY_HEADERS,
+          responseHeaders:
+            [
+              {
+                header: 'x-frame-options',
+                operation: DNR_REMOVE,
+              },
+              {
+                header: 'content-security-policy',
+                operation: DNR_REMOVE,
+              },
+            ],
+        }, condition: {
+          urlFilter: '*',
+          resourceTypes: [
+            'main_frame' as chrome.declarativeNetRequest.ResourceType,
+            'sub_frame' as chrome.declarativeNetRequest.ResourceType,
+            'xmlhttprequest' as chrome.declarativeNetRequest.ResourceType,
+            'websocket' as chrome.declarativeNetRequest.ResourceType,
+          ],
+        },
+      },
+    ],
+  }, () => {
+    if (chrome.runtime.lastError) {
+      console.error('Error updating rules:', chrome.runtime.lastError.message,);
+    } else {
+      console.log('Rules updated successfully');
+      if (iframe) {
+        iframe.src = currenturl;
+      }
+    }
+  },
+  );
+};

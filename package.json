@@ -30,9 +30,13 @@
   },
   "manifest": {
     "permissions": [
+      "declarativeNetRequest",
       "contextMenus",
       "activeTab",
       "storage"
+    ],
+    "host_permissions": [
+      "https://*/*"
     ]
   }
 }
