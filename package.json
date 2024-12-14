@@ -36,7 +36,13 @@
       "storage"
     ],
     "host_permissions": [
-      "https://*/*"
+      "https://*.youtube.com/*",
+      "https://*.reddit.com/*",
+      "https://*.twitch.tv/*",
+      "https://*.google.com/*",
+      "https://*.instagram.com/*",
+      "https://*.twitter.com/*",
+      "https://*.bsky.app/*"
     ]
   }
 }

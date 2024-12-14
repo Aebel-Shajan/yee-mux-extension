@@ -79,9 +79,9 @@ const InfoPage = (
         </details>
 
         <details name="help">
-          <summary>I can't open websites like reddit, youtube or google in the panels.</summary>
+          <summary>I can't open a website in the panels.</summary>
           <div>
-            Due to how iframe and cors work, this is disabled by default. There is a way
+            Due to how iframe and cors work, these websites are disabled by default. There is a way
             to enable these websites through an extension called -
             <a
               href="https://chromewebstore.google.com/detail/hiframe-the-hyper-iframe/joibipdfkleencgfgbbncoheaekffdfn"
