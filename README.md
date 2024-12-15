@@ -6,8 +6,6 @@
 I made Yee Mux because I wanted an easy way to multitask on me macbook without having a million tabs open. 
 
 
-<img src="https://imgur.com/e0Zingp" />
-
 
 ## Getting Started
 
